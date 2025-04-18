@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #ifndef REGISTER_DEFINITIONS_H
 #define REGISTER_DEFINITIONS_H
 
@@ -16,12 +18,12 @@
 /* Registers of Reset and Clock enable for AHB1 */
 #define RCC_AHB1_RST_R_OFFSET       (0x10U)
 #define RCC_AHB1_CLKEN_R_OFFSET     (0x30U)
-#define RCC_AHB1_RST_R              (RCC_BASE + RCC_AHB1_RST_R_OFFSET)
-#define RCC_AHB1_CLKEN_R            (RCC_BASE + RCC_AHB1_CLKEN_R_OFFSET)
+#define RCC_AHB1_RST_R_ADDR         (RCC_BASE + RCC_AHB1_RST_R_OFFSET)
+#define RCC_AHB1_CLKEN_R_ADDR       (RCC_BASE + RCC_AHB1_CLKEN_R_OFFSET)
 
 /* Mode register for GPIO */
 #define GPIO_MODE_R_OFFSET          (0x00U)
-#define GPIOD_MODE_R                (GPIOD_BASE + GPIO_MODE_R_OFFSET)
+#define GPIOD_MODE_R_ADDR           (GPIOD_BASE + GPIO_MODE_R_OFFSET)
 
 /* To enable the GPIO_D Clock, the corresponding bit in RCC_AHB1_CLKEN_R
  * has to be set, which is bit 3
@@ -30,7 +32,7 @@
 
 /* Output Data register */
 #define GPIO_OD_R_OFFSET            (0x14U)
-#define GPIOD_OD_R                  (GPIOD_BASE + GPIO_OD_R_OFFSET)
+#define GPIOD_OD_R_ADDR             (GPIOD_BASE + GPIO_OD_R_OFFSET)
 
 /* For this project, pin 13 of GPIO_D is being used */
 #define PIN                         (0x13U)
@@ -44,6 +46,9 @@
  *
  * @detail 2: if the pin is being used as output, the bit PIN should be set in
  *            GPIO output data register of that port.
+ *
+ * @detail 3: To read a register, you need to typecaste it to a pointer of type volatile
+ *            unisgned int and then dereference it.
  * */
 
 #endif /* REGISTER_DEFINITIONS_H */
