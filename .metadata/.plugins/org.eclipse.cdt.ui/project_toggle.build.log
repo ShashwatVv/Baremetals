@@ -1,4 +1,4 @@
-19:03:42 **** Build of configuration Debug for project project_toggle ****
+21:41:07 **** Incremental Build of configuration Debug for project project_toggle ****
 make -j10 all 
 arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f407vgtx.d" -MT"Startup/startup_stm32f407vgtx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f407vgtx.o" "../Startup/startup_stm32f407vgtx.s"
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
@@ -16,5 +16,5 @@ Finished building: default.size.stdout
 Finished building: project_toggle.list
  
 
-19:03:42 Build Finished. 0 errors, 0 warnings. (took 472ms)
+21:41:08 Build Finished. 0 errors, 0 warnings. (took 422ms)
 
