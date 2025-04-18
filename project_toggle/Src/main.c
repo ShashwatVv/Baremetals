@@ -11,7 +11,7 @@
 #define SET_MODE_PIN(PIN_NUM) ((1<<2*PIN_NUM) & (~(1<<(2*PIN_NUM+1))))
 #define TRUE                  1
 
-void delay()
+void delay(void)
 {
   for(uint32_t i=0; i<0x100000; i++);
 }
@@ -33,4 +33,6 @@ int main(void)
 		GPIOD_OD_R = GPIOD_OD_R & ~(LED);
 		delay();
 	}
+
+	return 0;
 }
