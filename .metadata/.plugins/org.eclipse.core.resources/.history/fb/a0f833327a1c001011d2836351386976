@@ -1,0 +1,17 @@
+
+/**
+ * The pin to be toggled is
+ * orange LED, a user LED connected to the I/O PD13 of the
+ * STM32F407VGT6.
+ * */
+
+#include "Register_Definitions.h"
+
+int main()
+{
+	/* enable clock to the GPIO_D */
+	RCC_AHB1_CLKEN_R = RCC_AHB1_CLKEN_R | (uint32_t)(GPIOD_EN);
+
+	/* Set mode as output */
+	GPIOD_MODE_R = GPIOD_MODE_R | (1<< 2*PIN) | ~(1<<2*PIN+1) ;
+}

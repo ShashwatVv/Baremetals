@@ -7,7 +7,30 @@
 
 #include "Register_Definitions.h"
 
-int main()
+/* Sets pin for output              bit 26 to 1       bit 27 to 0 */
+#define SET_MODE_PIN(PIN_NUM) ((1<<2*PIN_NUM) & (~(1<<(2*PIN_NUM+1))))
+#define TRUE                  1
+
+void delay()
 {
-	return 0;
+  for(uint32_t i=0; i<0x100000; i++);
+}
+
+int main(void)
+{
+	/* enable clock to the GPIO_D */
+	RCC_AHB1_CLKEN_R = RCC_AHB1_CLKEN_R | (uint32_t)(GPIOD_EN);
+
+	/* Set mode as output */
+	GPIOD_MODE_R = GPIOD_MODE_R | SET_MODE_PIN(PIN);
+
+	while(TRUE)
+	{
+		/* Set the output to high */
+		GPIOD_OD_R = GPIOD_OD_R | LED;
+		delay();
+		/* Set the output to low */
+		GPIOD_OD_R = GPIOD_OD_R & ~(LED);
+		delay();
+	}
 }

@@ -1,0 +1,13 @@
+
+/**
+ * The pin to be toggled is
+ * orange LED, a user LED connected to the I/O PD13 of the
+ * STM32F407VGT6.
+ * */
+
+#include "Register_Definitions.h"
+
+int main()
+{
+	return 0;
+}

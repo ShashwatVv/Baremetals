@@ -1,7 +1,9 @@
-#include <stdint.h>
-
 #ifndef REGISTER_DEFINITIONS_H
 #define REGISTER_DEFINITIONS_H
+
+#include <stdint.h>
+
+#define V_INT32_PTR                 (volatile uint32_t*)
 
 #define PERIPH_BASE                 (0x40000000U)
 #define AHB1_OFFSET                 (0x00020000U)
@@ -20,10 +22,14 @@
 #define RCC_AHB1_CLKEN_R_OFFSET     (0x30U)
 #define RCC_AHB1_RST_R_ADDR         (RCC_BASE + RCC_AHB1_RST_R_OFFSET)
 #define RCC_AHB1_CLKEN_R_ADDR       (RCC_BASE + RCC_AHB1_CLKEN_R_OFFSET)
+#define RCC_AHB1_RST_R              *(V_INT32_PTR (RCC_AHB1_RST_R_ADDR))
+#define RCC_AHB1_CLKEN_R            *(V_INT32_PTR (RCC_AHB1_CLKEN_R_ADDR))
+
 
 /* Mode register for GPIO */
 #define GPIO_MODE_R_OFFSET          (0x00U)
 #define GPIOD_MODE_R_ADDR           (GPIOD_BASE + GPIO_MODE_R_OFFSET)
+#define GPIOD_MODE_R               *(V_INT32_PTR (GPIOD_MODE_R_ADDR))
 
 /* To enable the GPIO_D Clock, the corresponding bit in RCC_AHB1_CLKEN_R
  * has to be set, which is bit 3
@@ -33,10 +39,11 @@
 /* Output Data register */
 #define GPIO_OD_R_OFFSET            (0x14U)
 #define GPIOD_OD_R_ADDR             (GPIOD_BASE + GPIO_OD_R_OFFSET)
+#define GPIOD_OD_R                  *(V_INT32_PTR (GPIOD_OD_R_ADDR))
 
 /* For this project, pin 13 of GPIO_D is being used */
-#define PIN                         (0x13U)
-#define LED                          PIN
+#define PIN                         (uint32_t)(13U)
+#define LED                         (1<<PIN)
 
 /*
  * @detail 1: To use a pin, need to specify in the MODE Register as
