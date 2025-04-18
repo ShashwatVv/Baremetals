@@ -1,7 +1,7 @@
 #ifndef REGISTER_DEFINITIONS_H
 #define REGISTER_DEFINITIONS_H
 
-#define PERIPH_BASE                 (0x40000000U)
+#define PERIPH_BASE 				(0x40000000U)
 #define AHB1_OFFSET                 (0x00020000U)
 #define AHB1_BASE                   (PERIPH_BASE + AHB1_OFFSET)
 
